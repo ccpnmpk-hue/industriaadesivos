@@ -89,13 +89,16 @@ header.scrolled {
   text-decoration: none;
 }
 
-.logo-mark {
-  width: 36px;
-  height: 36px;
-  background: var(--orange);
-  clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+.logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
   flex-shrink: 0;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.35));
 }
+
+.logo-mark { display: none; }
 
 .logo-text {
   font-family: 'Barlow Condensed', sans-serif;
@@ -1570,7 +1573,31 @@ footer {
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+  .hero-visual {
+    display: block;
+    width: min(100%, 620px);
+    margin: 28px auto 0;
+  }
+  .hero-car-showcase {
+    aspect-ratio: 16/10;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 22px 70px rgba(0,0,0,0.42);
+  }
+  .hero-car-showcase img {
+    object-position: center;
+  }
+  .hero-stats {
+    right: 12px;
+    top: auto;
+    bottom: 12px;
+    transform: none;
+    flex-direction: row;
+  }
+  .hero-stat {
+    min-width: 96px;
+    padding: 10px 14px;
+  }
   .diferenciais-grid { grid-template-columns: 1fr; }
   .diferenciais-left { padding-left: 0; border-left: none; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); }
   .servicos-grid { grid-template-columns: 1fr 1fr; }
@@ -1586,6 +1613,29 @@ footer {
 
 @media (max-width: 768px) {
   section { padding: 70px 0; }
+  #hero { min-height: auto; }
+  .hero-content { padding: 96px 0 64px; }
+  .hero-inner { gap: 30px; }
+  .hero-visual { width: 100%; margin-top: 4px; }
+  .hero-car-showcase {
+    aspect-ratio: 16/11;
+    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+  }
+  .hero-stats {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .hero-stat {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 10px;
+  }
+  .hero-stat strong { font-size: 22px; }
+  .hero-stat small { font-size: 8px; }
+  .logo-img { width: 38px; height: 38px; }
   .header-cta .btn-header:not(.btn-header--cta) { display: none; }
   .servicos-grid { grid-template-columns: 1fr; }
   .processo-steps { grid-template-columns: repeat(2, 1fr); }
@@ -1600,6 +1650,25 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .logo { gap: 8px; }
+  .logo-img { width: 34px; height: 34px; }
+  .logo-text { font-size: 14px; }
+  .logo-text span { display: none; }
+  .hero-car-showcase {
+    aspect-ratio: 4/3;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .hero-stats {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 2px solid var(--orange);
+  }
   .processo-steps { grid-template-columns: 1fr 1fr; }
   .galeria-item:nth-child(4), .galeria-item:nth-child(5), .galeria-item:nth-child(6) { grid-column: span 6; }
 }
@@ -1612,7 +1681,7 @@ footer {
   <div class="container">
     <div class="header-inner">
       <a href="#" class="logo">
-        <div class="logo-mark"></div>
+        <img class="logo-img" src="img/logo.png" alt="Logo Indústria Adesivos" loading="eager">
         <div class="logo-text">
           Industria Adesivos
           <span>Betim · Envelopamento Premium</span>
